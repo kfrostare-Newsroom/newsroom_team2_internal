@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import CreateArticle from "./components/CreateArticle";
-import { Grommet, Main, Heading, Button } from "grommet";
+import { Grommet, Main, Heading, Button, Box } from "grommet";
 import { grommet } from "grommet/themes";
 
 class App extends Component {
