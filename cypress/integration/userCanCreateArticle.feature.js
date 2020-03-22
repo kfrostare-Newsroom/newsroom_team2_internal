@@ -8,6 +8,7 @@ describe("Journalist can", () => {
     cy.get(".create-article").within(() => {
       cy.get(".title").type("Sweden vs Germany");
       cy.get(".content").type("Sweden should follow Germany's example during the Corona Crisis")
+      cy.get("button").contains("Submit").click()
     });
   });
 });

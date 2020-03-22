@@ -16,12 +16,12 @@ class CreateArticle extends Component {
         <Form className="create-article" onSubmit={this.articleCreation.bind(this)}>
           <TextInput
             className="title"
-            placeholder="This is where your write your title"
+            placeholder="This is where you write your title"
             key="title"
           />
           <TextArea
             className="content"
-            placeholder="This is where your write your content"
+            placeholder="This is where you write your content"
             key="content"
           />
           <Button label="Submit Article" type="submit"/>
