@@ -4,9 +4,6 @@ import { TextArea, TextInput, Button, Form, Box } from 'grommet'
 import axios from 'axios'
 
 class CreateArticle extends Component {
-  state = {
-    message: ''
-  }
 
   articleCreation = async event => {
     try {
@@ -17,9 +14,11 @@ class CreateArticle extends Component {
           content: event.target.content.value
         }
       })
-      this.setState({ message: response.data.message })
+      this.props.dispatch({
+        type: "ARTICLE_SUBMITTED",
+        payload: { message: response.data.message }})
     } catch (error) {
-      this.setState({ message: error.message })
+      this.props.dispatch({type: "ARTICLE_SUBMITTED", payload: {message: error.message}})
     }
   }
 
@@ -50,13 +49,20 @@ class CreateArticle extends Component {
             required={true}
           />
           <Button label='Submit Article' type='submit' />
+          <Button label='Go Back' onClick={() => this.props.dispatch({ type: 'HIDE_CREATE' })} />
         </Form>
         <Box className="message">
-        {this.state.message}
+        {this.props.message}
         </Box>
       </>
     )
   }
 }
 
-export default connect()(CreateArticle)
+const mapStateToProps = state => {
+  return {
+    message: state.message
+  };
+};
+
+export default connect(mapStateToProps)(CreateArticle)

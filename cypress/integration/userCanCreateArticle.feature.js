@@ -1,6 +1,12 @@
 describe("Journalist can", () => {
   beforeEach(() => {
     cy.visit("/");
+    cy.server();
+    cy.route({
+      method: "POST",
+      url: "http://localhost:3000/api/articles",
+      response: "fixture:create_article_response.json"
+    })
   });
 
   it("write in its article", () => {

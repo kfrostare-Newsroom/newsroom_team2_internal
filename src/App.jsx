@@ -17,12 +17,11 @@ class App extends Component {
               margin='medium'
               className='article'
             >
-              {this.props.state.firstPage && (
+              {this.props.state.firstPage && 
                 <Button
                   label='Create Article'
                   onClick={() => this.props.dispatch({ type: 'SHOW_CREATE' })}
-                />
-              )}
+                />}
               {this.props.state.createArticle && <CreateArticle />}
             </Box>
           </Main>
@@ -31,6 +30,8 @@ class App extends Component {
     )
   }
 }
+
+
 
 const mapStateToProps = state => {
   return {

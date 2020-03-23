@@ -8,12 +8,18 @@ const rootReducer = (state = initialState, action) => {
         createArticle: true,
         firstPage: false
       }
+      case "ARTICLE_SUBMITTED":
+        return {
+          ...state,
+          message: action.payload.message
+        }
       case "HIDE_CREATE":
         return {
           ...state,
-          createArticle: false
-        }  
-    default:
+          createArticle: false,
+          firstPage: true
+        }   
+    default: 
       return state;
   }
 };
