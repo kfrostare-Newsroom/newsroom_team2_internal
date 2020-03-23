@@ -26,7 +26,7 @@ class CreateArticle extends Component {
   render () {
     return (
       <>
-        <h1>Let's create som magic...</h1>
+        <h1>Let's create some magic...</h1>
         <Form className='create-article' onSubmit={this.articleCreation}>
           <TextInput
             className='title'
