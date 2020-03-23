@@ -33,18 +33,21 @@ class CreateArticle extends Component {
             placeholder='This is where you write your title'
             key='title'
             id='title'
+            required="true"
           />
           <TextArea
             className='teaser'
             placeholder='This is where you write your teaser'
             key='teaser'
             id='teaser'
+            required="true"
           />
           <TextArea
             className='content'
             placeholder='This is where you write your content'
             key='content'
             id='content'
+            required="true"
           />
           <Button label='Submit Article' type='submit' />
         </Form>
