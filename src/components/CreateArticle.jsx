@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { TextArea, TextInput, Button, Form } from 'grommet'
+import { TextArea, TextInput, Button, Form, Box } from 'grommet'
 import axios from 'axios'
 
 class CreateArticle extends Component {
@@ -33,24 +33,27 @@ class CreateArticle extends Component {
             placeholder='This is where you write your title'
             key='title'
             id='title'
-            required="true"
+            required={true}
           />
           <TextArea
             className='teaser'
             placeholder='This is where you write your teaser'
             key='teaser'
             id='teaser'
-            required="true"
+            required={true}
           />
           <TextArea
             className='content'
             placeholder='This is where you write your content'
             key='content'
             id='content'
-            required="true"
+            required={true}
           />
           <Button label='Submit Article' type='submit' />
         </Form>
+        <Box className="message">
+        {this.state.message}
+        </Box>
       </>
     )
   }

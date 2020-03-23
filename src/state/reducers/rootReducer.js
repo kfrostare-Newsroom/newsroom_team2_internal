@@ -12,7 +12,7 @@ const rootReducer = (state = initialState, action) => {
         return {
           ...state,
           createArticle: false
-        }
+        }  
     default:
       return state;
   }
