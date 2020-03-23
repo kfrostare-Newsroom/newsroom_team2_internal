@@ -5,16 +5,24 @@ import { TextArea, TextInput, Button, Form } from "grommet";
 class CreateArticle extends Component {
 
   articleCreation() {
-    debugger
+    debugger;
   }
-
 
   render() {
     return (
       <>
         <h1>Let's create som magic...</h1>
-        <Form className="create-article" onSubmit={this.articleCreation.bind(this)}>
+        <Form
+          className="create-article"
+          onSubmit={this.articleCreation.bind(this)}
+        >
           <TextInput
+            // onChange={event =>
+            //   this.props.dispatch({
+            //     type: "INPUT",
+            //     payload: { formInput: event.target.value }
+            //   })
+            // }
             className="title"
             placeholder="This is where your write your title"
             key="title"
@@ -24,7 +32,7 @@ class CreateArticle extends Component {
             placeholder="This is where your write your content"
             key="content"
           />
-          <Button label="Submit Article" type="submit"/>
+          <Button label="Submit Article" type="submit" />
         </Form>
       </>
     );
