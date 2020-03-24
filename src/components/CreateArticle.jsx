@@ -1,24 +1,36 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { TextArea, TextInput, Button, Form, Box } from 'grommet'
+import { TextArea, TextInput, Button, Form, Box, RadioButtonGroup } from 'grommet'
 import axios from 'axios'
 
 class CreateArticle extends Component {
 
   articleCreation = async event => {
+    let isPremium;
+    if (event.target.access.value === "Premium") {
+      isPremium = false
+    }
+    else if (event.target.access.value === "Free") {
+      isPremium = false
+    }
+    debugger
+    
     try {
       let response = await axios.post('/articles', {
         article: {
           title: event.target.title.value,
           teaser: event.target.teaser.value,
-          content: event.target.content.value
+          content: event.target.content.value,
+          premium_article: isPremium
         }
       })
+      debugger
       this.props.dispatch({
         type: "ARTICLE_SUBMITTED",
         payload: { message: response.data.message }})
     } catch (error) {
       this.props.dispatch({type: "ARTICLE_SUBMITTED", payload: {message: error.message}})
+      debugger
     }
   }
 
@@ -27,6 +39,12 @@ class CreateArticle extends Component {
       <>
         <h1>Let's create some magic...</h1>
         <Form className='create-article' onSubmit={this.articleCreation}>
+          <RadioButtonGroup
+              name="access"
+              className="access"
+              id="access"
+              options={["Free", "Premium"]}
+            />
           <TextInput
             className='title'
             placeholder='This is where you write your title'
