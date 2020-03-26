@@ -29,7 +29,6 @@ class CreateArticle extends Component {
         }
 
       });
-      debugger
       this.props.dispatch({
         type: "ARTICLE_SUBMITTED",
         payload: { message: response.data.message }
