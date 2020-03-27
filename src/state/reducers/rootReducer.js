@@ -18,7 +18,12 @@ const rootReducer = (state = initialState, action) => {
           ...state,
           createArticle: false,
           firstPage: true
-        }   
+        } 
+      case "LOGIN":
+        return {
+          ...state,
+          ...action.payload
+        }  
     default: 
       return state;
   }

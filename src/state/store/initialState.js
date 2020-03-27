@@ -1,7 +1,9 @@
 const initialState = {
   createArticle: false,
   firstPage: true,
-  message: ""
+  message: "",
+  authenticated: false,
+  userEmail: ""
 };
 
 export default initialState;

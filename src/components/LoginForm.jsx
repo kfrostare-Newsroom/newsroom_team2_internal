@@ -1,20 +1,23 @@
 import React, { Component } from "react";
 import auth from "../modules/auth";
 import { Form, TextInput, Button, Box } from "grommet";
+import { connect } from "react-redux"
 
 class LoginForm extends Component {
   onLogin = async event => {
     try {
       event.preventDefault();
-      debugger;
       let response = await auth.signIn(
         event.target.email.value,
         event.target.password.value
-      ); debugger
-      console.log(response);
-    } catch (error) {
-      console.log(error);
-    }
+      );
+
+      this.props.dispatch({
+        type: "LOGIN",
+        payload: { authenticated: true, userEmail: response.data.email }
+      });
+      debugger;
+    } catch(error) {}
   };
   render() {
     return (
@@ -28,5 +31,11 @@ class LoginForm extends Component {
     );
   }
 }
+const mapStateToProps = state => {
+  return {
+    authenticated: state.authenticated,
+    userEmail: state.userEmail
+  };
+};
 
-export default LoginForm;
+export default connect(mapStateToProps)(LoginForm);
