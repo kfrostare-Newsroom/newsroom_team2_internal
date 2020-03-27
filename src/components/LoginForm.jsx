@@ -14,7 +14,7 @@ class LoginForm extends Component {
 
       this.props.dispatch({
         type: "LOGIN",
-        payload: { authenticated: true, userEmail: response.data.email }
+        payload: { authenticated: true, userEmail: response.data.email, firstPage: true }
       });
       debugger;
     } catch(error) {}

@@ -1,6 +1,6 @@
 const initialState = {
   createArticle: false,
-  firstPage: true,
+  firstPage: false,
   message: "",
   authenticated: false,
   userEmail: ""
