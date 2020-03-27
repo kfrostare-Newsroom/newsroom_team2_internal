@@ -3,7 +3,7 @@ const initialState = {
   firstPage: false,
   message: "",
   authenticated: false,
-  userEmail: ""
+  userEmail: "",
 };
 
 export default initialState;

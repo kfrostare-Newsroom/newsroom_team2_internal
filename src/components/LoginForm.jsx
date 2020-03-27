@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import auth from "../modules/auth";
 import { Form, TextInput, Button, Box } from "grommet";
-import { connect } from "react-redux"
+import { connect } from "react-redux";
 
 class LoginForm extends Component {
   onLogin = async event => {
@@ -14,21 +14,43 @@ class LoginForm extends Component {
 
       this.props.dispatch({
         type: "LOGIN",
-        payload: { authenticated: true, userEmail: response.data.email, firstPage: true }
+        payload: {
+          authenticated: true,
+          userEmail: response.data.email,
+          firstPage: true
+        }
       });
-      debugger;
-    } catch(error) {}
+    } catch (error) {}
   };
   render() {
-    return (
-      <Box>
-        <Form onSubmit={this.onLogin}>
-          <TextInput name="email" placeholder="email" />
-          <TextInput name="password" type="password" placeholder="password" />
-          <Button margin="small" type="submit" label="Login" />
-        </Form>
-      </Box>
-    );
+    let login;
+    if (this.props.authenticated) {
+      login = (
+        <>
+          <p>Hello {this.props.userEmail}</p>
+        </>
+      );
+      debugger;
+    } else {
+      login = (
+        <>
+          <Box>
+            <Form onSubmit={this.onLogin}>
+              <TextInput name="email" placeholder="email" />
+              <TextInput
+                name="password"
+                type="password"
+                placeholder="password"
+              />
+              <Button margin="small" type="submit" label="Login" />
+            </Form>
+          </Box>
+        </>
+      );
+      debugger;
+    }
+
+    return { login };
   }
 }
 const mapStateToProps = state => {
