@@ -23,34 +23,17 @@ class LoginForm extends Component {
     } catch (error) {}
   };
   render() {
-    let login;
-    if (this.props.authenticated) {
-      login = (
-        <>
-          <p>Hello {this.props.userEmail}</p>
-        </>
-      );
-      debugger;
-    } else {
-      login = (
-        <>
-          <Box>
-            <Form onSubmit={this.onLogin}>
-              <TextInput name="email" placeholder="email" />
-              <TextInput
-                name="password"
-                type="password"
-                placeholder="password"
-              />
-              <Button margin="small" type="submit" label="Login" />
-            </Form>
-          </Box>
-        </>
-      );
-      debugger;
-    }
-
-    return { login };
+    return (
+      <>
+        <Box>
+          <Form id="login-form" onSubmit={this.onLogin}>
+            <TextInput id="email" name="email" placeholder="email" />
+            <TextInput id="password" name="password" type="password" placeholder="password" />
+            <Button margin="small" type="submit" label="Login" />
+          </Form>
+        </Box>
+      </>
+    );
   }
 }
 const mapStateToProps = state => {
