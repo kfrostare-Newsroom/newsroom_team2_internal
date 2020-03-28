@@ -40,9 +40,11 @@ describe("Journalist authenticates", () => {
         .click();
     });
     cy.get("#message").should("contain", "Hello user@mail.com");
-    cy.get("#login-form").should("not.exist")
-    cy.get("button").contains("Logout").click()
-    cy.get("#login-form").should("exist")
+    cy.get("#login-form").should("not.exist");
+    cy.get("button")
+      .contains("Logout")
+      .click();
+    cy.get("#login-form").should("exist");
     cy.get("#email").type("now we are logged out");
-  })
+  });
 });

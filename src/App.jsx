@@ -16,7 +16,8 @@ class App extends Component {
           onClick={() => this.props.dispatch({ type: "SHOW_CREATE" })}
         />
       );
-    } else {}
+    } else {
+    }
 
     return (
       <>
@@ -32,7 +33,7 @@ class App extends Component {
               margin="medium"
               className="article"
             >
-             {button}
+              {button}
               {this.props.state.createArticle && <CreateArticle />}
             </Box>
             {this.props.state.loginForm && <LoginForm />}
