@@ -1,13 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import {
-  TextArea,
-  TextInput,
-  Button,
-  Form,
-  Box,
-  CheckBox
-} from "grommet";
+import { TextArea, TextInput, Button, Form, Box, CheckBox } from "grommet";
 import axios from "axios";
 
 class CreateArticle extends Component {
@@ -27,7 +20,6 @@ class CreateArticle extends Component {
           content: event.target.content.value,
           article_class: articleClass
         }
-
       });
       this.props.dispatch({
         type: "ARTICLE_SUBMITTED",
@@ -50,7 +42,7 @@ class CreateArticle extends Component {
             name="premium"
             className="premium"
             id="premium"
-            label="Premium?"
+            label="Premium"
           />
 
           <TextInput

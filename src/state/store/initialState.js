@@ -1,7 +1,10 @@
 const initialState = {
   createArticle: false,
-  firstPage: true,
-  message: ""
+  firstPage: false,
+  message: "",
+  authenticated: false,
+  userEmail: "",
+  loginForm: true
 };
 
 export default initialState;
