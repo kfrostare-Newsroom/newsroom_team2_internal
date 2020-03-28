@@ -6,7 +6,8 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         createArticle: true,
-        firstPage: false
+        firstPage: false,
+        loginForm: false
       }
       case "ARTICLE_SUBMITTED":
         return {
@@ -23,7 +24,12 @@ const rootReducer = (state = initialState, action) => {
         return {
           ...state,
           ...action.payload
-        }  
+        }
+      case "LOGOUT":
+        return {
+          ...state,
+          ...action.payload
+        }    
     default: 
       return state;
   }
