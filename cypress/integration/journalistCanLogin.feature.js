@@ -11,9 +11,17 @@ describe("Journalist authenticates", () => {
       response: "fixture:journalist_login.json",
       headers: {
         uid: "user@mail.com",
-        token: "ixQJyGKqovMs6ngyR8EmqQ"
       }
     })
+    cy.route({
+      method: "GET",
+      url: "http://localhost:3000/api/auth/validate_token?uid=user@mail.com",
+      response: "fixture:journalist_login.json",
+      headers: {
+        uid: "user@mail.com",
+      }
+    });
+
     cy.get("#login-form").within(() => {
       cy.get("#email").type("user@mail.com");
       cy.get("#password").type("password");
@@ -21,6 +29,6 @@ describe("Journalist authenticates", () => {
         .contains("Login")
         .click();
     });
-    cy.get("#message").should("contain", "Hi user@mail.com");
+    cy.get("#message").should("contain", "Hello user@mail.com");
   });
 });

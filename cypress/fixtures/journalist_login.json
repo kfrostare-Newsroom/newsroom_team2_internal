@@ -5,7 +5,6 @@
     "provider": "email",
     "uid": "user@mail.com",
     "name": "trial",
-    "allow_password_change": false,
-    "access-token": "ixQJyGKqovMs6ngyR8EmqQ"
+    "allow_password_change": false
   }
 }
