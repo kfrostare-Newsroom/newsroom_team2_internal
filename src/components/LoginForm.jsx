@@ -20,11 +20,19 @@ class LoginForm extends Component {
           firstPage: true
         }
       });
-    } catch (error) {}
+    } catch (error) {
+      console.log(error)
+    }
   };
   render() {
-    return (
-      <>
+    let login;
+
+    if (this.props.authenticated === true) {
+      login = (
+      <p id="message">Hello {this.props.userEmail}</p>
+      )
+    } else {
+      login = (
         <Box>
           <Form id="login-form" onSubmit={this.onLogin}>
             <TextInput id="email" name="email" placeholder="email" />
@@ -32,6 +40,12 @@ class LoginForm extends Component {
             <Button margin="small" type="submit" label="Login" />
           </Form>
         </Box>
+      )
+    }
+
+    return (
+      <>
+        {login}
       </>
     );
   }
