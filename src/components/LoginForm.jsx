@@ -11,7 +11,7 @@ class LoginForm extends Component {
         event.target.email.value,
         event.target.password.value
       );
-
+      debugger
       this.props.dispatch({
         type: "LOGIN",
         payload: {
