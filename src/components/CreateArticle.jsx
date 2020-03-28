@@ -50,7 +50,7 @@ class CreateArticle extends Component {
             name="premium"
             className="premium"
             id="premium"
-            label="Premium?"
+            label="Premium"
           />
 
           <TextInput
