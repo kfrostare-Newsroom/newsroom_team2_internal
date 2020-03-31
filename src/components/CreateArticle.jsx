@@ -5,6 +5,7 @@ import axios from "axios";
 
 class CreateArticle extends Component {
   articleCreation = async event => {
+    let headers = JSON.parse(localStorage.getItem('J-tockAuth-Storage'));
     let articleClass;
     if (event.target.premium.checked === true) {
       articleClass = "premium";
@@ -19,8 +20,11 @@ class CreateArticle extends Component {
           teaser: event.target.teaser.value,
           content: event.target.content.value,
           article_class: articleClass
-        }
-      });
+        },
+      },
+      {headers: headers}
+      );
+
       this.props.dispatch({
         type: "ARTICLE_SUBMITTED",
         payload: { message: response.data.message }
