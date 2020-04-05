@@ -12,19 +12,19 @@ describe("Journalist can", () => {
       url: "http://localhost:3000/api/auth/sign_in",
       response: "fixture:journalist_login.json",
       headers: {
-        uid: "user@mail.com",
+        uid: "journalist@mail.com",
       }
     })
     cy.route({
       method: "GET",
-      url: "http://localhost:3000/api/auth/validate_token?uid=user@mail.com",
+      url: "http://localhost:3000/api/auth/validate_token?uid=journalist@mail.com",
       response: "fixture:journalist_login.json",
       headers: {
-        uid: "user@mail.com",
+        uid: "journalist@mail.com",
       }
     });
     cy.get("#login-form").within(() => {
-      cy.get("#email").type("user@mail.com");
+      cy.get("#email").type("journalist@mail.com");
       cy.get("#password").type("password");
       cy.get("button")
         .contains("Login")
@@ -34,6 +34,7 @@ describe("Journalist can", () => {
 
 
   it("Create Premium article", () => {
+    cy.wait(1000)
     cy.get("button").contains("Create Article").click()
     cy.get(".create-article").within(() => {
       cy.get(".title").type("Sweden vs Germany")
@@ -46,6 +47,7 @@ describe("Journalist can", () => {
   });
 
   it("Create Free Article", () => {
+    cy.wait(1000)
     cy.get("button").contains("Create Article").click()
     cy.get(".create-article").within(() => {
       cy.get(".title").type("Sweden vs Germany")
