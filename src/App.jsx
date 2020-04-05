@@ -12,6 +12,7 @@ class App extends Component {
     if (this.props.state.authenticated === true && this.props.state.firstPage) {
       button = (
         <Button
+          color="#544C2F"
           label="Create Article"
           onClick={() => this.props.dispatch({ type: "SHOW_CREATE" })}
         />
