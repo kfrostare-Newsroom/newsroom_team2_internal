@@ -1,10 +1,17 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { TextArea, TextInput, Button, Form, Box, CheckBox } from "grommet";
+import { Attachment, Trash } from "grommet-icons";
 import axios from "axios";
+import ImageUploading from "react-images-uploading"
 
 class CreateArticle extends Component {
+  state = {
+    image: []
+  }
+
   articleCreation = async event => {
+    event.preventDefault()
     let headers = JSON.parse(localStorage.getItem('J-tockAuth-Storage'));
     let articleClass;
     if (event.target.premium.checked === true) {
@@ -19,20 +26,30 @@ class CreateArticle extends Component {
           title: event.target.title.value,
           teaser: event.target.teaser.value,
           content: event.target.content.value,
+          image: this.state.image,
           article_class: articleClass
         },
       },
-      {headers: headers}
+        { headers: headers }
       );
 
       this.props.dispatch({
         type: "ARTICLE_SUBMITTED",
         payload: { message: response.data.message }
       });
+
     } catch (error) {
       this.props.dispatch({
         type: "ARTICLE_SUBMITTED",
         payload: { message: error.message }
+      });
+    }
+  };
+
+  onImageDropHandler = imageList => {
+    if (imageList.length > 0) {
+      this.setState({
+        image: imageList[0].dataURL
       });
     }
   };
@@ -70,6 +87,42 @@ class CreateArticle extends Component {
             id="content"
             required={true}
           />
+
+          <ImageUploading onChange={this.onImageDropHandler}>
+            {({ imageList, onImageUpload }) => (
+              <div className="upload__image-wrapper">
+                <Button
+                  primary
+                  id="image-uploader"
+                  label="Upload Images"
+                  size="small"
+                  margin="xsmall"
+                  color="black"
+                  icon={<Attachment />}
+                  onClick={onImageUpload}
+                />
+                &nbsp;
+                {imageList.map(image => (
+                  <div key={image.key} className="image-item">
+                    <img src={image.dataURL} alt="" width="100" />
+                    <div className="image-item__btn-wrapper">
+                      <Button
+                        primary
+                        type="button"
+                        id="image-remove"
+                        label="Remove Image"
+                        size="small"
+                        margin="xsmall"
+                        color="black"
+                        icon={<Trash />}
+                        onClick={image.onRemove}
+                      />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </ImageUploading>
           <Button label="Submit Article" type="submit" />
           <Button
             label="Go Back"

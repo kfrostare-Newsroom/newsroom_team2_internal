@@ -6,15 +6,15 @@ describe("Journalist authenticates", () => {
       url: "http://localhost:3000/api/auth/sign_in",
       response: "fixture:journalist_login.json",
       headers: {
-        uid: "user@mail.com"
+        uid: "journalist@mail.com"
       }
     });
     cy.route({
       method: "GET",
-      url: "http://localhost:3000/api/auth/validate_token?uid=user@mail.com",
+      url: "http://localhost:3000/api/auth/validate_token?uid=journalist@mail.com",
       response: "fixture:journalist_login.json",
       headers: {
-        uid: "user@mail.com"
+        uid: "journalist@mail.com"
       }
     });
     cy.visit("/");
@@ -22,24 +22,24 @@ describe("Journalist authenticates", () => {
 
   it("successfully with valid credentials", () => {
     cy.get("#login-form").within(() => {
-      cy.get("#email").type("user@mail.com");
+      cy.get("#email").type("journalist@mail.com");
       cy.get("#password").type("password");
       cy.get("button")
         .contains("Login")
         .click();
     });
-    cy.get("#message").should("contain", "Hello user@mail.com");
+    cy.get("#message").should("contain", "Hello journalist@mail.com");
   });
 
   it("and also logout", () => {
     cy.get("#login-form").within(() => {
-      cy.get("#email").type("user@mail.com");
+      cy.get("#email").type("journalist@mail.com");
       cy.get("#password").type("password");
       cy.get("button")
         .contains("Login")
         .click();
     });
-    cy.get("#message").should("contain", "Hello user@mail.com");
+    cy.get("#message").should("contain", "Hello journalist@mail.com");
     cy.get("#login-form").should("not.exist");
     cy.get("button")
       .contains("Logout")

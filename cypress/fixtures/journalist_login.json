@@ -2,9 +2,9 @@
   "data": {
     "id": 1,
     "role": "journalist",
-    "email": "user@mail.com",
+    "email": "journalist@mail.com",
     "provider": "email",
-    "uid": "user@mail.com",
+    "uid": "journalist@mail.com",
     "name": "trial",
     "allow_password_change": false
   }
